@@ -1,18 +1,31 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class ParkingLot {
 
     int capacity;
-    Car car;
+    Map<CarTicket, Car> carTicketSystem;
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
+        carTicketSystem = new HashMap<>();
     }
 
     public CarTicket park(Car car) {
-        this.car = car;
-        return new CarTicket();
+        if (ReturnNothingWhenParkLotIsFull()) return null;
+        CarTicket carTicket = new CarTicket();
+        carTicketSystem.put(carTicket, car);
+        return carTicket;
     }
 
     public Car pick(CarTicket carTicket) {
-        return car;
+        return carTicketSystem.get(carTicket);
+    }
+
+    private boolean ReturnNothingWhenParkLotIsFull() {
+        if(carTicketSystem.size() == capacity){
+            return true;
+        }
+        return false;
     }
 }

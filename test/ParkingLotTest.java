@@ -1,5 +1,8 @@
+import org.junit.Assert;
 import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 public class ParkingLotTest {
@@ -16,5 +19,12 @@ public class ParkingLotTest {
         assertSame(car, parkingLot.pick(carTicket));
     }
 
-    
+    @Test()
+    public void WhenParkLotIsFullShouldNotParkAnyCars() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        Car secondCar = new Car();
+        assertNotNull(parkingLot.park(firstCar));
+        assertNull(parkingLot.park(secondCar));
+    }
 }
