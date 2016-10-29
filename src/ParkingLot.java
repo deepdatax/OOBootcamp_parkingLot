@@ -12,20 +12,19 @@ public class ParkingLot {
     }
 
     public CarTicket park(Car car) {
-        if (ReturnNothingWhenParkLotIsFull()) return null;
+        if (IsParkLotFull()) return null;
         CarTicket carTicket = new CarTicket();
         carTicketSystem.put(carTicket, car);
         return carTicket;
     }
 
     public Car pick(CarTicket carTicket) {
-        return carTicketSystem.get(carTicket);
+        Car car = carTicketSystem.get(carTicket);
+        carTicketSystem.remove(carTicket);
+        return car;
     }
 
-    private boolean ReturnNothingWhenParkLotIsFull() {
-        if(carTicketSystem.size() == capacity){
-            return true;
-        }
-        return false;
+    private boolean IsParkLotFull() {
+        return carTicketSystem.size() == capacity;
     }
 }

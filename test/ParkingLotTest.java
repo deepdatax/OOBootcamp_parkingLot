@@ -12,7 +12,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void ShouldPickTheSameCarWhenCarWasParkedInParkLot() {
+    public void WhenCarWasParkedInParkLotShouldPickTheSameCar() {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         CarTicket carTicket = parkingLot.park(car);
@@ -27,4 +27,16 @@ public class ParkingLotTest {
         assertNotNull(parkingLot.park(firstCar));
         assertNull(parkingLot.park(secondCar));
     }
+
+    @Test()
+    public void WhenParkLotIsFullAndOneCarIsPickedShouldParkAnotherCars() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car firstCar = new Car();
+        CarTicket firstCarTicket = parkingLot.park(firstCar);
+        Car secondCar = new Car();
+        assertSame(firstCar, parkingLot.pick(firstCarTicket));
+        assertNotNull(parkingLot.park(secondCar));
+    }
+
+
 }
