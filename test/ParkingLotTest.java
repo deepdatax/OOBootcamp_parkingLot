@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotSame;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -15,7 +16,9 @@ public class ParkingLotTest {
     public void WhenCarWasParkedInParkLotShouldPickTheSameCar() {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
+
         CarTicket carTicket = parkingLot.park(car);
+
         assertSame(car, parkingLot.pick(carTicket));
     }
 
@@ -24,6 +27,7 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car firstCar = new Car();
         Car secondCar = new Car();
+
         assertNotNull(parkingLot.park(firstCar));
         assertNull(parkingLot.park(secondCar));
     }
@@ -34,6 +38,7 @@ public class ParkingLotTest {
         Car firstCar = new Car();
         CarTicket firstCarTicket = parkingLot.park(firstCar);
         Car secondCar = new Car();
+
         assertSame(firstCar, parkingLot.pick(firstCarTicket));
         assertNotNull(parkingLot.park(secondCar));
     }
@@ -43,6 +48,20 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         parkingLot.park(car);
+
         assertNull(parkingLot.pick(null));
     }
+
+    @Test()
+    public void WhenTwoCarsParkedInParkLotShouldNotPickFirstCarsUsingSecondTicket() {
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car firstCar = new Car();
+        CarTicket firstCarTicket = parkingLot.park(firstCar);
+        Car secondCar = new Car();
+        CarTicket secondCarTicket = parkingLot.park(secondCar);
+
+        assertNotSame(firstCar, parkingLot.pick(secondCarTicket));
+        assertSame(firstCar, parkingLot.pick(firstCarTicket));
+    }
+
 }
