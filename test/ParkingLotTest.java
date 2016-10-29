@@ -73,4 +73,16 @@ public class ParkingLotTest {
         assertSame(firstCar, parkingLot.pick(firstCarTicket));
     }
 
+    @Test()
+    public void WhenTwoCarsParkedInParkLotShouldNotPickCarsUsingSameTicketTwice() {
+        ParkingLot parkingLot = new ParkingLot(2);
+        Car firstCar = new Car();
+        CarTicket firstCarTicket = parkingLot.park(firstCar);
+        Car secondCar = new Car();
+        parkingLot.park(secondCar);
+
+        assertSame(firstCar, parkingLot.pick(firstCarTicket));
+        assertNull(null, parkingLot.pick(firstCarTicket));
+    }
+
 }
