@@ -52,6 +52,15 @@ public class ParkingLotTest {
         assertNull(parkingLot.pick(null));
     }
 
+    @Test
+    public void WhenCarWasParkedInParkLotShouldNotPickAnyCarWrongTickets() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        parkingLot.park(car);
+
+        assertNull(parkingLot.pick(new CarTicket()));
+    }
+
     @Test()
     public void WhenTwoCarsParkedInParkLotShouldNotPickFirstCarsUsingSecondTicket() {
         ParkingLot parkingLot = new ParkingLot(2);
