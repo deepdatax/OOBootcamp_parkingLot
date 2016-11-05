@@ -1,13 +1,8 @@
 import org.junit.Test;
-
 import java.util.Arrays;
-
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
-/**
- * Created by rzhe on 03/11/2016.
- */
 public class SmartParkingBoyTest {
     @Test
     public void whenParkACarViaParkingBoyShouldPickCarViaParkingLot() throws Exception {
@@ -30,14 +25,12 @@ public class SmartParkingBoyTest {
     }
 
     @Test
-    public void whenParkACarViaParkingBoyWithFullParkingLotShouldPickCarViaSmartParkingBoy() throws Exception {
-        Car car = new Car();
+    public void whenParkACarViaParkingBoyInFullParkingLotShouldNotParkCarViaSmartParkingBoy() throws Exception {
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
-        CarTicket carTicket = smartParkingBoy.park(car);
 
-        assertNull(smartParkingBoy.pick(carTicket));
+        assertNull(smartParkingBoy.park(new Car()));
     }
 
     @Test
