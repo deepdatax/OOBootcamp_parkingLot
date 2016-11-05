@@ -24,7 +24,11 @@ public class ParkingLot {
         return car;
     }
 
-    private boolean IsParkLotFull() {
+    public boolean IsCarInPark(CarTicket carTicket) {
+        return carTicketSystem.containsKey(carTicket);
+    }
+
+    public boolean IsParkLotFull() {
         return carTicketSystem.size() == capacity;
     }
 }
