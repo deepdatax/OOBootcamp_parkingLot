@@ -31,4 +31,8 @@ public class ParkingLot {
     public boolean IsParkLotFull() {
         return carTicketSystem.size() == capacity;
     }
+
+    public int vacancy() {
+        return capacity - carTicketSystem.size();
+    }
 }

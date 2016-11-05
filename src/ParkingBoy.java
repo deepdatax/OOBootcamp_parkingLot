@@ -1,39 +1,15 @@
-import java.util.Arrays;
 import java.util.List;
 
-public class ParkingBoy {
-    List<ParkingLot> parkingLots;
+public class ParkingBoy extends ParkingStaff {
+
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLots = Arrays.asList(parkingLot);
+        super(parkingLot);
     }
 
     public ParkingBoy(List<ParkingLot> parkingLotList) {
-        this.parkingLots = parkingLotList;
+        super(parkingLotList);
     }
-
-    public CarTicket park(Car car) {
-        for(ParkingLot parkingLot : parkingLots){
-            if(!parkingLot.IsParkLotFull()){
-                return parkingLot.park(car);
-            }
-        }
-        return null;
-    }
-
-    public Car pick(CarTicket ticket) {
-        for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.IsCarInPark(ticket)){
-                return parkingLot.pick(ticket);
-            }
-        }
-        return null;
-    }
-
-
-
-
-
 
     ///////////////////////////////////////////////////////
     public CarTicket parkLamda(Car car) {

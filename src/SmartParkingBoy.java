@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class SmartParkingBoy extends ParkingBoy {
+public class SmartParkingBoy extends ParkingStaff {
     public SmartParkingBoy(ParkingLot parkingLot) {
         super(parkingLot);
     }
@@ -9,7 +9,18 @@ public class SmartParkingBoy extends ParkingBoy {
         super(parkingLot);
     }
 
+    @Override
+    public CarTicket park(Car car) {
+        return getMaxVacancyParkingLot().park(car);
+    }
 
-
-
+    private ParkingLot getMaxVacancyParkingLot() {
+        ParkingLot maxParkingLot = parkingLots.get(0);
+        for (ParkingLot parkLot : parkingLots) {
+            if(parkLot.vacancy() > maxParkingLot.vacancy()){
+                maxParkingLot = parkLot;
+            }
+        }
+        return maxParkingLot;
+    }
 }

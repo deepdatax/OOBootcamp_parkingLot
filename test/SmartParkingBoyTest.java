@@ -35,7 +35,6 @@ public class SmartParkingBoyTest {
 
     @Test
     public void WhenFirstParkingLotHasMoreVacancyThanSecondOneAndParkACarViaParkingBoyParkingLotShouldPickCarInFirstParking() {
-
         Car car = new Car();
         ParkingLot firstParkingLot = new ParkingLot(2);
         ParkingLot secondParkingLot = new ParkingLot(1);
@@ -46,18 +45,29 @@ public class SmartParkingBoyTest {
 
     }
 
-//    @Test
-//    public void WhenSecondParkingLotHasMoreVacancyThanFirstOneAndParkACarViaParkingBoyParkingLotShouldPickCarInFirstParking() {
-//
-//        Car car = new Car();
-//        ParkingLot firstParkingLot = new ParkingLot(1);
-//        ParkingLot secondParkingLot = new ParkingLot(2);
-//        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
-//        CarTicket carTicket = smartParkingBoy.park(car);
-//
-//        assertSame(car, secondParkingLot.pick(carTicket));
-//
-//    }
+    @Test
+    public void WhenSecondParkingLotHasMoreVacancyThanFirstOneAndParkACarViaParkingBoyParkingLotShouldPickCarInSecondParking() {
+        Car car = new Car();
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+        CarTicket carTicket = smartParkingBoy.park(car);
+
+        assertSame(car, secondParkingLot.pick(carTicket));
+
+    }
+
+    @Test
+    public void WhenTwoParkingLotHasSameAvailableVacancyAndParkACarViaParkingBoyParkingLotShouldPickCarInFirstParking() {
+        Car car = new Car();
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+        CarTicket carTicket = smartParkingBoy.park(car);
+
+        assertSame(car, firstParkingLot.pick(carTicket));
+
+    }
 
 
 }
