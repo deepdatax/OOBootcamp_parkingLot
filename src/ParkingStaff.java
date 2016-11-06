@@ -12,15 +12,6 @@ public class ParkingStaff {
         this.parkingLots = parkingLotList;
     }
 
-    public CarTicket park(Car car) {
-        for(ParkingLot parkingLot : parkingLots){
-            if(!parkingLot.IsParkLotFull()){
-                return parkingLot.park(car);
-            }
-        }
-        return null;
-    }
-
     public Car pick(CarTicket ticket) {
         for (ParkingLot parkingLot : parkingLots) {
             if(parkingLot.IsCarInPark(ticket)){

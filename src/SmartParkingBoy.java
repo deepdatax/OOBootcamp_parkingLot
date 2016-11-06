@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class SmartParkingBoy extends ParkingStaff {
+public class SmartParkingBoy extends ParkingStaff implements ParkingBehaviour{
     public SmartParkingBoy(ParkingLot parkingLot) {
         super(parkingLot);
     }

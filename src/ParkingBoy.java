@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class ParkingBoy extends ParkingStaff {
+public class ParkingBoy extends ParkingStaff implements ParkingBehaviour{
 
 
     public ParkingBoy(ParkingLot parkingLot) {
@@ -31,4 +31,15 @@ public class ParkingBoy extends ParkingStaff {
         });
         return pick[0];
     }
+
+    @Override
+    public CarTicket park(Car car) {
+        for(ParkingLot parkingLot : parkingLots){
+            if(!parkingLot.IsParkLotFull()){
+                return parkingLot.park(car);
+            }
+        }
+        return null;
+    }
+
 }
