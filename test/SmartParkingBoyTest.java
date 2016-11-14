@@ -1,11 +1,13 @@
 import org.junit.Test;
 import java.util.Arrays;
+
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 public class SmartParkingBoyTest {
     @Test
-    public void whenParkACarViaParkingBoyShouldPickCarViaParkingLot() throws Exception {
+    public void WhenParkACarViaParkingBoyShouldPickCarViaParkingLot() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
@@ -15,7 +17,7 @@ public class SmartParkingBoyTest {
     }
 
     @Test
-    public void whenParkACarViaParkingBoyShouldPickCarViaSmartParkingBoy() throws Exception {
+    public void WhenParkACarViaParkingBoyShouldPickCarViaSmartParkingBoy() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
@@ -25,12 +27,43 @@ public class SmartParkingBoyTest {
     }
 
     @Test
-    public void whenParkACarViaParkingBoyInFullParkingLotShouldNotParkCarViaSmartParkingBoy() throws Exception {
+    public void WhenParkingLotIsFullShouldPickCarViaSmartParkingBoyAfterOneCarBeingPicked() {
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        CarTicket carTicket = smartParkingBoy.park(car);
+        assertNull(smartParkingBoy.park(new Car()));
+        smartParkingBoy.pick(carTicket);
+
+        assertNotNull(smartParkingBoy.park(new Car()));
+
+    }
+
+    @Test
+    public void WhenParkACarViaParkingBoyInFullParkingLotShouldNotParkCarViaSmartParkingBoy() {
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
 
         assertNull(smartParkingBoy.park(new Car()));
+    }
+
+    @Test
+    public void WhenParkACarViaParkingBoyShouldNotParkCarWithoutTicketsViaSmartParkingBoy() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        smartParkingBoy.park(new Car());
+
+        assertNull(smartParkingBoy.pick(null));
+    }
+
+    @Test
+    public void WhenParkACarViaParkingBoyShouldNotParkCarWithWrongTicketsViaSmartParkingBoy() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        smartParkingBoy.park(new Car());
+
+        assertNull(smartParkingBoy.pick(new CarTicket()));
     }
 
     @Test
