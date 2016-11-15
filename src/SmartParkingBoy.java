@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class SmartParkingBoy extends ParkingStaff {
+public class SmartParkingBoy extends ParkingStaffBase {
     public SmartParkingBoy(ParkingLot parkingLot) {
         super(parkingLot);
     }
@@ -9,7 +9,6 @@ public class SmartParkingBoy extends ParkingStaff {
         super(parkingLot);
     }
 
-    @Override
     public CarTicket park(Car car) {
         return getMaxVacancyParkingLot().park(car);
     }

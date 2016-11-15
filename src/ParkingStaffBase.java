@@ -1,24 +1,15 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class ParkingStaff {
+public class ParkingStaffBase {
     List<ParkingLot> parkingLots;
 
-    public ParkingStaff(ParkingLot parkingLot) {
+    public ParkingStaffBase(ParkingLot parkingLot) {
         this.parkingLots = Arrays.asList(parkingLot);
     }
 
-    public ParkingStaff(List<ParkingLot> parkingLotList) {
+    public ParkingStaffBase(List<ParkingLot> parkingLotList) {
         this.parkingLots = parkingLotList;
-    }
-
-    public CarTicket park(Car car) {
-        for(ParkingLot parkingLot : parkingLots){
-            if(!parkingLot.IsParkLotFull()){
-                return parkingLot.park(car);
-            }
-        }
-        return null;
     }
 
     public Car pick(CarTicket ticket) {
