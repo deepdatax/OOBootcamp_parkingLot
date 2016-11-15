@@ -35,4 +35,8 @@ public class ParkingLot {
     public int vacancy() {
         return capacity - carTicketSystem.size();
     }
+
+    public double vacancyRate() {
+        return vacancy()/capacity;
+    }
 }
