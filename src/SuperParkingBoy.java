@@ -9,17 +9,8 @@ public class SuperParkingBoy extends ParkingStaffBase {
         super(parkingLotList);
     }
 
-    public CarTicket park(Car car) {
-        return getMaxVacancyRateParkingLot().park(car);
-    }
-
-    private ParkingLot getMaxVacancyRateParkingLot() {
-        ParkingLot max = parkingLots.get(0);
-        for (ParkingLot parkingLot : parkingLots) {
-            if(parkingLot.vacancyRate() > max.vacancyRate()){
-                max = parkingLot;
-            }
-        }
-        return max;
+    @Override
+    boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot) {
+        return parkingLot.vacancyRate() > maxParkingLot.vacancyRate();
     }
 }

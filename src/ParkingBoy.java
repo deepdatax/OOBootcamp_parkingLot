@@ -10,12 +10,9 @@ public class ParkingBoy extends ParkingStaffBase {
         super(parkingLotList);
     }
 
-    public CarTicket park(Car car) {
-        for(ParkingLot parkingLot : parkingLots){
-            if(!parkingLot.IsParkLotFull()){
-                return parkingLot.park(car);
-            }
-        }
-        return null;
+    @Override
+    boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot) {
+        return maxParkingLot.IsParkLotFull() && !parkingLot.IsParkLotFull();
     }
+
 }

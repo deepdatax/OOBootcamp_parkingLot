@@ -9,17 +9,10 @@ public class SmartParkingBoy extends ParkingStaffBase {
         super(parkingLot);
     }
 
-    public CarTicket park(Car car) {
-        return getMaxVacancyParkingLot().park(car);
+    @Override
+    boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot) {
+        return parkingLot.vacancy() > maxParkingLot.vacancy();
     }
 
-    private ParkingLot getMaxVacancyParkingLot() {
-        ParkingLot maxParkingLot = parkingLots.get(0);
-        for (ParkingLot parkLot : parkingLots) {
-            if(parkLot.vacancy() > maxParkingLot.vacancy()){
-                maxParkingLot = parkLot;
-            }
-        }
-        return maxParkingLot;
-    }
+
 }

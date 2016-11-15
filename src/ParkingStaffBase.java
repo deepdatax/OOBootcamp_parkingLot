@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class ParkingStaffBase {
+public abstract class ParkingStaffBase {
     List<ParkingLot> parkingLots;
 
     public ParkingStaffBase(ParkingLot parkingLot) {
@@ -20,4 +20,16 @@ public class ParkingStaffBase {
         }
         return null;
     }
+
+    public CarTicket park(Car car) {
+        ParkingLot maxParkingLot = parkingLots.get(0);
+        for(ParkingLot parkingLot : parkingLots){
+            if(canParkCarWithBestCondition(maxParkingLot, parkingLot)){
+                maxParkingLot = parkingLot;
+            }
+        }
+        return maxParkingLot.park(car);
+    }
+
+    abstract boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot);
 }
