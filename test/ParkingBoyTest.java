@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class ParkingBoyTest {
     @Test
-    public void WhenParkCarViaParkingBoyThenShouldPickTheCarViaParkingLot() {
+    public void when_park_car_via_parking_boy_then_should_pick_the_car_via_parking_lot() {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
@@ -16,7 +16,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenParkCarViaParkingBoyThenShouldPickTheCarViaParkingBoy() {
+    public void when_park_car_via_parking_boy_then_should_pick_the_car_via_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         Car car = new Car();
@@ -26,7 +26,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenParkLotIsFullThenShouldNotPickAnyCarViaParkingBoy() {
+    public void when_park_lot_is_full_then_should_not_pick_any_car_via_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.park(new Car());
@@ -35,7 +35,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenCarIsParkedThenShouldNotPickAnyCarWithoutTicketsViaParkingBoy() {
+    public void when_car_is_parked_then_should_not_pick_any_car_without_tickets_via_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.park(new Car());
@@ -44,7 +44,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenCarIsParkedThenShouldNotPickAnyCarWithWrongTicketsViaParkingBoy() {
+    public void when_car_is_parked_then_should_not_pick_any_car_with_wrong_tickets_via_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         parkingBoy.park(new Car());
@@ -54,7 +54,7 @@ public class ParkingBoyTest {
 
 
     @Test
-    public void WhenPickCarWithSameTicketTwiceShouldNotPickAnyCar() {
+    public void when_pick_car_with_same_ticket_twice_should_not_pick_any_car() {
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(firstParkingLot);
         CarTicket carTicket = parkingBoy.park(new Car());
@@ -64,7 +64,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenParkLotIsFullThenShouldPickCarViaParkingBoyAfterOneCarBeingPicked() {
+    public void when_park_lot_is_full_then_should_pick_car_via_parking_boy_after_one_car_being_picked() {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         CarTicket carTicket = parkingBoy.park(new Car());
@@ -74,7 +74,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenTwoAvailableParkLotsShouldParkInFirstParkLot() {
+    public void when_two_available_park_lots_should_park_in_first_park_lot() {
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
@@ -86,7 +86,7 @@ public class ParkingBoyTest {
 
 
     @Test
-    public void WhenTwoParkLotsAndFirstIsFullShouldParkInSecondParkLot() {
+    public void when_two_park_lots_and_first_is_full_should_park_in_second_park_lot() {
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
@@ -98,7 +98,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void WhenTwoParkLotsAndFirstIsFullShouldParkInSecondParkLotAfterOneCarBeingPickedFromSecondParkLot() {
+    public void when_two_park_lots_and_first_is_full_should_park_in_second_park_lotAfterOneCarBeingPickedFromSecondParkLot() {
         ParkingLot firstParkingLot = new ParkingLot(1);
         ParkingLot secondParkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
