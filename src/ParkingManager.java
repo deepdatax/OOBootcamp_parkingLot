@@ -7,4 +7,8 @@ public class ParkingManager {
     public CarTicket park(Car car) {
         return parkingLot.park(car);
     }
+
+    public Car pick(CarTicket carTicket) {
+        return parkingLot.pick(carTicket);
+    }
 }
