@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot implements ParkPick{
 
     int capacity;
     Map<CarTicket, Car> carTicketSystem;
@@ -11,6 +11,7 @@ public class ParkingLot {
         carTicketSystem = new HashMap<>();
     }
 
+    @Override
     public CarTicket park(Car car) {
         if (IsParkLotFull()) return null;
         CarTicket carTicket = new CarTicket();
@@ -18,6 +19,7 @@ public class ParkingLot {
         return carTicket;
     }
 
+    @Override
     public Car pick(CarTicket carTicket) {
         Car car = carTicketSystem.get(carTicket);
         carTicketSystem.remove(carTicket);

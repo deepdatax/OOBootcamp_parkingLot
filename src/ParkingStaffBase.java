@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class ParkingStaffBase {
+public abstract class ParkingStaffBase implements ParkPick {
     List<ParkingLot> parkingLots;
 
     public ParkingStaffBase(ParkingLot parkingLot) {
@@ -12,6 +12,7 @@ public abstract class ParkingStaffBase {
         this.parkingLots = parkingLotList;
     }
 
+    @Override
     public Car pick(CarTicket ticket) {
         for (ParkingLot parkingLot : parkingLots) {
             if(parkingLot.IsCarInPark(ticket)){
@@ -21,6 +22,7 @@ public abstract class ParkingStaffBase {
         return null;
     }
 
+    @Override
     public CarTicket park(Car car) {
         ParkingLot maxParkingLot = parkingLots.get(0);
         for(ParkingLot parkingLot : parkingLots){
