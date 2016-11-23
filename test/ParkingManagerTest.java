@@ -6,7 +6,7 @@ public class ParkingManagerTest {
     @Test
     public void when_manager_manages_one_parkingLot_and_park_one_car_should_the_same_car_pick_in_parkingLot() {
         ParkingLot parkingLot = new ParkingLot(1);
-        ParkingManager parkingManager = new ParkingManager(parkingLot);
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingLot));
         Car car = new Car();
         CarTicket carTicket = parkingManager.park(car);
 
@@ -16,7 +16,7 @@ public class ParkingManagerTest {
     @Test
     public void when_manager_manages_one_parkingLot_and_park_one_car_should_the_same_car_pick_via_manager() {
         ParkingLot parkingLot = new ParkingLot(1);
-        ParkingManager parkingManager = new ParkingManager(parkingLot);
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingLot));
         Car car = new Car();
         CarTicket carTicket = parkingManager.park(car);
 
@@ -26,8 +26,8 @@ public class ParkingManagerTest {
     @Test
     public void when_manager_manages_one_parkingBoy_and_park_one_car_should_the_same_car_pick_via_manager() {
         ParkingLot parkingLot = new ParkingLot(1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
-        ParkingManager parkingManager = new ParkingManager(parkingBoy);
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(parkingLot));
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingBoy));
         Car car = new Car();
         CarTicket carTicket = parkingManager.park(car);
 
@@ -37,7 +37,7 @@ public class ParkingManagerTest {
     @Test
     public void when_manager_manages_one_parkingBoy_one_parkingLot_and_park_one_car_should_the_same_car_pick_via_manager() {
         ParkingLot parkingLot = new ParkingLot(1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(parkingLot));
         ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingBoy, parkingLot));
         Car car = new Car();
         CarTicket carTicket = parkingManager.park(car);

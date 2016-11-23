@@ -1,12 +1,7 @@
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class ParkingStaffBase implements ParkPick {
     List<ParkingLot> parkingLots;
-
-    public ParkingStaffBase(ParkingLot parkingLot) {
-        this.parkingLots = Arrays.asList(parkingLot);
-    }
 
     public ParkingStaffBase(List<ParkingLot> parkingLotList) {
         this.parkingLots = parkingLotList;

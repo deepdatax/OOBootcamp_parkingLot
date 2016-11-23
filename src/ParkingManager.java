@@ -1,12 +1,7 @@
-import java.util.Arrays;
 import java.util.List;
 
 public class ParkingManager {
     List<ParkPick> parkPickWays;
-
-    public ParkingManager(ParkPick parkPickWay) {
-        this.parkPickWays = Arrays.asList(parkPickWay);
-    }
 
     public ParkingManager(List<ParkPick> parkPickWays) {
         this.parkPickWays = parkPickWays;

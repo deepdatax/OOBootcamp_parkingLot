@@ -8,7 +8,7 @@ public class SuperParkingBoyTest {
     public void when_park_car_via_super_parking_boy_should_pick_same_car_in_parking_lot() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLot);
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(Arrays.asList(parkingLot));
 
         CarTicket carTicket = superParkingBoy.park(car);
 
@@ -19,7 +19,7 @@ public class SuperParkingBoyTest {
     public void when_park_car_in_parking_lot_should_pick_same_car_via_super_parking_boy() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLot);
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(Arrays.asList(parkingLot));
 
         CarTicket carTicket = superParkingBoy.park(car);
 
@@ -30,7 +30,7 @@ public class SuperParkingBoyTest {
     public void when_parking_lot_is_full_should_not_park_any_cars() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLot);
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(Arrays.asList(parkingLot));
         parkingLot.park(car);
 
         assertNull(superParkingBoy.park(car));

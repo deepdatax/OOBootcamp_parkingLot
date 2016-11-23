@@ -10,7 +10,7 @@ public class SmartParkingBoyTest {
     public void when_park_a_car_via_parking_boy_should_pick_car_via_parking_lot() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
         CarTicket carTicket = smartParkingBoy.park(car);
 
         assertSame(car, parkingLot.pick(carTicket));
@@ -20,7 +20,7 @@ public class SmartParkingBoyTest {
     public void when_park_a_car_via_parking_boy_should_pick_car_via_smart_parking_boy() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
         CarTicket carTicket = smartParkingBoy.park(car);
 
         assertSame(car, smartParkingBoy.pick(carTicket));
@@ -30,7 +30,7 @@ public class SmartParkingBoyTest {
     public void when_parking_lot_is_full_should_pick_car_via_smart_parking_boy_after_one_car_being_picked() {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
         CarTicket carTicket = smartParkingBoy.park(car);
         assertNull(smartParkingBoy.park(new Car()));
         smartParkingBoy.pick(carTicket);
@@ -43,7 +43,7 @@ public class SmartParkingBoyTest {
     public void when_park_a_car_via_parking_boy_in_full_parking_lot_should_not_park_car_via_smart_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
 
         assertNull(smartParkingBoy.park(new Car()));
     }
@@ -51,7 +51,7 @@ public class SmartParkingBoyTest {
     @Test
     public void when_park_a_car_via_parking_boy_should_not_park_car_without_tickets_via_smart_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
         smartParkingBoy.park(new Car());
 
         assertNull(smartParkingBoy.pick(null));
@@ -60,7 +60,7 @@ public class SmartParkingBoyTest {
     @Test
     public void when_park_a_car_via_parking_boy_should_not_park_car_with_wrong_tickets_via_smart_parking_boy() {
         ParkingLot parkingLot = new ParkingLot(1);
-        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLot);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
         smartParkingBoy.park(new Car());
 
         assertNull(smartParkingBoy.pick(new CarTicket()));
