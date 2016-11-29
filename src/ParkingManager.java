@@ -1,14 +1,14 @@
 import java.util.List;
 
 public class ParkingManager {
-    List<ParkPick> parkPickWays;
+    List<IParking> parkPickWays;
 
-    public ParkingManager(List<ParkPick> parkPickWays) {
+    public ParkingManager(List<IParking> parkPickWays) {
         this.parkPickWays = parkPickWays;
     }
 
     public CarTicket park(Car car) {
-        for (ParkPick parkPickWay : parkPickWays) {
+        for (IParking parkPickWay : parkPickWays) {
             CarTicket carTicket = parkPickWay.park(car);
             if(carTicket != null){
                 return carTicket;
@@ -18,7 +18,7 @@ public class ParkingManager {
     }
 
     public Car pick(CarTicket carTicket) {
-        for (ParkPick parkPickWay : parkPickWays) {
+        for (IParking parkPickWay : parkPickWays) {
             Car car = parkPickWay.pick(carTicket);
             if(car != null){
                 return car;

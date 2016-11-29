@@ -1,6 +1,6 @@
 import java.util.List;
 
-public abstract class ParkingStaffBase implements ParkPick {
+public abstract class ParkingStaffBase implements IParking {
     List<ParkingLot> parkingLots;
 
     public ParkingStaffBase(List<ParkingLot> parkingLotList) {

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot implements ParkPick{
+public class ParkingLot implements IParking {
 
     int capacity;
     Map<CarTicket, Car> carTicketSystem;
