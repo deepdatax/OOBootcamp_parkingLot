@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,5 +41,9 @@ public class ParkingLot implements IParking {
 
     public double vacancyRate() {
         return vacancy()/capacity;
+    }
+
+    public void report(PrintStream out) {
+        out.print("\t\t" + getClass().getName() + "\t" + vacancy() + "\t" + capacity + "\n");
     }
 }
