@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.List;
 
 public abstract class ParkingStaffBase implements IParking {
@@ -29,4 +30,19 @@ public abstract class ParkingStaffBase implements IParking {
     }
 
     abstract boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot);
+
+    public String report() {
+        int vacancy = 0;
+        int total = 0;
+        String parkingLotReport = "";
+
+        for (ParkingLot parkingLot : parkingLots) {
+            vacancy += parkingLot.vacancy();
+            total += parkingLot.capacity;
+            parkingLotReport += "\t" + parkingLot.report();
+        }
+
+        return getClass().getName()+"\t"+vacancy+"\t"+total+"\n" + parkingLotReport;
+
+    }
 }

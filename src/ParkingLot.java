@@ -43,7 +43,7 @@ public class ParkingLot implements IParking {
         return vacancy()/capacity;
     }
 
-    public void report(PrintStream out) {
-        out.print("\t\t" + getClass().getName() + "\t" + vacancy() + "\t" + capacity + "\n");
+    public String report() {
+        return getClass().getName() + "\t" + vacancy() + "\t" + capacity + "\n";
     }
 }

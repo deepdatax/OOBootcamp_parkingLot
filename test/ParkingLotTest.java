@@ -3,9 +3,7 @@ import org.junit.Test;
 import java.io.PrintStream;
 
 import static junit.framework.TestCase.assertNotSame;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -83,10 +81,8 @@ public class ParkingLotTest {
     @Test
     public void when_parking_lot_has_one_available_position_should_print_report() {
         ParkingLot parkingLot = new ParkingLot(1);
-        PrintStream out = mock(PrintStream.class);
-        parkingLot.report(out);
 
-        verify(out).print("\t\tParkingLot\t1\t1\n");
+        assertEquals("ParkingLot\t1\t1\n", parkingLot.report());
 
     }
 
@@ -94,10 +90,7 @@ public class ParkingLotTest {
     public void when_parking_lot_has_no_available_position_should_print_report() {
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
-        PrintStream out = mock(PrintStream.class);
-        parkingLot.report(out);
 
-        verify(out).print("\t\tParkingLot\t0\t1\n");
-
+        assertEquals("ParkingLot\t0\t1\n", parkingLot.report());
     }
 }
