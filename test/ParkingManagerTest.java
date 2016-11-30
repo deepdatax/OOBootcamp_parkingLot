@@ -1,6 +1,12 @@
 import org.junit.Test;
+
+import java.io.PrintStream;
 import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class ParkingManagerTest {
     @Test
@@ -69,4 +75,14 @@ public class ParkingManagerTest {
 
         assertSame(car, secondParkingLot.pick(carTicket));
     }
+
+    @Test
+    public void when_manager_manages_one_parkingLot_should_print_report() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingLot));
+
+        assertEquals("ParkingManager\t1\t1\n\tParkingLot\t1\t1\n", parkingManager.report());
+    }
+
+
 }

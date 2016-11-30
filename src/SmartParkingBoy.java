@@ -8,7 +8,7 @@ public class SmartParkingBoy extends ParkingStaffBase {
 
     @Override
     boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot) {
-        return parkingLot.vacancy() > maxParkingLot.vacancy();
+        return parkingLot.getVacancy() > maxParkingLot.getVacancy();
     }
 
 

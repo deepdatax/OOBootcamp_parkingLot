@@ -1,4 +1,3 @@
-import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,18 +31,25 @@ public class ParkingLot implements IParking {
     }
 
     public boolean IsParkLotFull() {
-        return carTicketSystem.size() == capacity;
+        return carTicketSystem.size() == getCapacity();
     }
 
-    public int vacancy() {
-        return capacity - carTicketSystem.size();
+    @Override
+    public int getVacancy() {
+        return getCapacity() - carTicketSystem.size();
     }
 
     public double vacancyRate() {
-        return vacancy()/capacity;
+        return getVacancy() / getCapacity();
     }
 
+    @Override
     public String report() {
-        return getClass().getName() + "\t" + vacancy() + "\t" + capacity + "\n";
+        return getClass().getName() + "\t" + getVacancy() + "\t" + getCapacity() + "\n";
+    }
+
+    @Override
+    public int getCapacity() {
+        return capacity;
     }
 }
