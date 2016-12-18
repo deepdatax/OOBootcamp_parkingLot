@@ -1,9 +1,8 @@
 import org.junit.Test;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SmartParkingBoyTest {
     @Test
@@ -102,5 +101,20 @@ public class SmartParkingBoyTest {
 
     }
 
+    @Test
+    public void when_smart_parking_boy_manages_one_parking_lot_should_give_report() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(parkingLot));
 
+        assertEquals("SmartParkingBoy\t1\t1\n\tParkingLot\t1\t1\n", smartParkingBoy.report(""));
+    }
+
+    @Test
+    public void when_smart_parking_boy_manages_many_parking_lots_should_give_report() {
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+
+        assertEquals("SmartParkingBoy\t3\t3\n\tParkingLot\t1\t1\n\tParkingLot\t2\t2\n", smartParkingBoy.report(""));
+    }
 }

@@ -24,4 +24,8 @@ public class ParkingDirector implements IReport{
     public String report(String tab) {
         return getClass().getName() + "\t" + getVacancy() + "\t" + getCapacity() + "\n" + parkingManager.report("\t");
     }
+
+    public void printReport(PrintStream out) {
+        out.print(report(""));
+    }
 }
