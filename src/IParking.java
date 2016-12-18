@@ -1,11 +1,6 @@
-public interface IParking {
+public interface IParking extends IReport {
     Car pick(CarTicket ticket);
 
     CarTicket park(Car car);
 
-    int getVacancy();
-
-    int getCapacity();
-
-    String report();
 }

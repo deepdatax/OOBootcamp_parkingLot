@@ -44,8 +44,8 @@ public class ParkingLot implements IParking {
     }
 
     @Override
-    public String report() {
-        return getClass().getName() + "\t" + getVacancy() + "\t" + getCapacity() + "\n";
+    public String report(String tab) {
+        return tab + getClass().getName() + "\t" + getVacancy() + "\t" + getCapacity() + "\n";
     }
 
     @Override

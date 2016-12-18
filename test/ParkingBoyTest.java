@@ -120,6 +120,16 @@ public class ParkingBoyTest {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(parkingLot));
 
-        assertEquals("ParkingBoy\t1\t1\n\tParkingLot\t1\t1\n", parkingBoy.report());
+        assertEquals("ParkingBoy\t1\t1\n\tParkingLot\t1\t1\n", parkingBoy.report(""));
+    }
+
+
+    @Test
+    public void when_parking_boy_manages_many_parking_lots_should_give_report() {
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(2);
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+
+        assertEquals("ParkingBoy\t3\t3\n\tParkingLot\t1\t1\n\tParkingLot\t2\t2\n", parkingBoy.report(""));
     }
 }

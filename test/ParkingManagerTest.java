@@ -78,11 +78,36 @@ public class ParkingManagerTest {
 
     @Test
     public void when_manager_manages_one_parkingLot_should_print_report() {
-        ParkingLot parkingLot = new ParkingLot(1);
-        ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingLot));
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(new ParkingLot(1)));
 
-        assertEquals("ParkingManager\t1\t1\n\tParkingLot\t1\t1\n", parkingManager.report());
+        assertEquals("ParkingManager\t1\t1\n\tParkingLot\t1\t1\n", parkingManager.report(""));
     }
+
+    @Test
+    public void when_manager_manages_one_parking_boy_should_print_report() {
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(new ParkingLot(1)));
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(parkingBoy));
+
+        assertEquals("ParkingManager\t1\t1\n\tParkingBoy\t1\t1\n\t\tParkingLot\t1\t1\n", parkingManager.report(""));
+    }
+
+    @Test
+    public void when_manager_manages_one_parkingLot_and_parking_boy_should_print_report() {
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(new ParkingLot(1)));
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(new ParkingLot(1), parkingBoy));
+
+        assertEquals("ParkingManager\t2\t2\n\tParkingLot\t1\t1\n\tParkingBoy\t1\t1\n\t\tParkingLot\t1\t1\n", parkingManager.report(""));
+    }
+
+    @Test
+    public void when_manager_manages_with_tab_one_parkingLot_and_parking_boy_should_print_report() {
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(new ParkingLot(1)));
+        ParkingManager parkingManager = new ParkingManager(Arrays.asList(new ParkingLot(1), parkingBoy));
+
+        assertEquals("\tParkingManager\t2\t2\n\t\tParkingLot\t1\t1\n\t\tParkingBoy\t1\t1\n\t\t\tParkingLot\t1\t1\n", parkingManager.report("\t"));
+    }
+
+
 
 
 }

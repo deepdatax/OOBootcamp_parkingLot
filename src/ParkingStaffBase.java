@@ -49,14 +49,14 @@ public abstract class ParkingStaffBase implements IParking {
     abstract boolean canParkCarWithBestCondition(ParkingLot maxParkingLot, ParkingLot parkingLot);
 
     @Override
-    public String report() {
+    public String report(String tab) {
         String parkingLotReport = "";
 
         for (ParkingLot parkingLot : parkingLots) {
-            parkingLotReport += "\t" + parkingLot.report();
+            parkingLotReport += parkingLot.report(tab + "\t");
         }
 
-        return getClass().getName()+"\t"+getVacancy()+"\t"+getCapacity()+"\n" + parkingLotReport;
+        return tab + getClass().getName()+"\t"+getVacancy()+"\t"+getCapacity()+"\n" + parkingLotReport;
 
     }
 }

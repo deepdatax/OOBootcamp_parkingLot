@@ -82,7 +82,7 @@ public class ParkingLotTest {
     public void when_parking_lot_has_one_available_position_should_print_report() {
         ParkingLot parkingLot = new ParkingLot(1);
 
-        assertEquals("ParkingLot\t1\t1\n", parkingLot.report());
+        assertEquals("ParkingLot\t1\t1\n", parkingLot.report(""));
 
     }
 
@@ -91,6 +91,6 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
 
-        assertEquals("ParkingLot\t0\t1\n", parkingLot.report());
+        assertEquals("ParkingLot\t0\t1\n", parkingLot.report(""));
     }
 }

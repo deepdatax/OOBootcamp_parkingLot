@@ -1,7 +1,7 @@
 import java.io.PrintStream;
 import java.util.List;
 
-public class ParkingManager {
+public class ParkingManager implements IReport {
     List<IParking> parkPickWays;
 
     public ParkingManager(List<IParking> parkPickWays) {
@@ -28,17 +28,32 @@ public class ParkingManager {
         return null;
     }
 
-    public String report() {
+    @Override
+    public int getVacancy() {
         int vacancy = 0;
-        int total = 0;
+        for (IParking parkPickWay : parkPickWays) {
+            vacancy += parkPickWay.getVacancy();
+        }
+        return vacancy;
+    }
+
+    @Override
+    public int getCapacity() {
+        int capacity = 0;
+        for (IParking parkPickWay : parkPickWays) {
+            capacity += parkPickWay.getCapacity();
+        }
+        return capacity;
+    }
+
+    @Override
+    public String report(String tab) {
         String parkingLotReport = "";
 
         for (IParking parkPickWay : parkPickWays) {
-            vacancy += parkPickWay.getVacancy();
-            total += parkPickWay.getCapacity();
-            parkingLotReport += "\t" + parkPickWay.report();
+            parkingLotReport += parkPickWay.report(tab + "\t");
         }
 
-        return getClass().getName()+"\t"+vacancy+"\t"+total+"\n" + parkingLotReport;
+        return tab + getClass().getName()+"\t"+getVacancy()+"\t"+getCapacity()+"\n" + parkingLotReport;
     }
 }
